@@ -1,0 +1,18 @@
+.brick {
+  width: 100px; /* sätter bredden */
+  height: 100px; /* sätter höjden */
+  background: #ffee58; /* sätter bakgrundsfärg */
+  display: flex; /* talar om att vi vill använda flexbox */
+  justify-content: center; /* centrerar horizontalt */
+  align-items: center; /* centrerar vertikalt */
+}
+
+
+.brick img {
+  width: 60px; /* sätter bredden */
+  height: 60px; /* sätter höjden */
+}
+.memory {
+  width: 450px; /* sätter bredden */
+  margin: 0 auto; /* centrerar horizontalt */
+}
