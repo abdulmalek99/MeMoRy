@@ -10,48 +10,63 @@
 /* TODO: 3. En enklare dokumenatation i README.md som ska vara skriven i markup språket Markdown.
 Bör innhållar kortare information om vad som ligger i respektive fil samt vilka kommandon som ska
 köras för att starta utvecklingsserver samt hur man bygger en build. */
-const memory = () => {
-  const rows = 4; // Antalet rader
-  const columns = 4; // Antalet kolumner
 
-  const tiles = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
-
-  const containerId = 'memory';
+const renderMemory = (containerId, bricks) => {
 
   const container = document.getElementById(containerId);
-  const template = document.querySelector('#memory template');
 
-  // FIXME:
+  const template = document.querySelector('#memory template');
+  // FIXME: 
+
   const templateDiv = template.content.firstElementChild;
 
   const div = document.importNode(templateDiv, false);
 
   container.appendChild(div);
 
-// FIXME:
+  //FIXME:
 
-  for (let i = 0; i < tiles.length; i++) {
-// FIXME: 
+  for (let i = 0; i < bricks.tiles.length; i++) {
+    //FIXME:
 
     const handleClick = event => {
-      // FIXME:
+      //FIXME:
       let img;
-      if (event.target.tagName === 'DIV') {
+      if(event.target,tagName === 'DIV') {
         img = event.target.firstElementChild;
       } else {
         img = event.target;
       }
-      const path = `images/${tiles[i]}.png`;
-      img.setAttribute('src', path);
+      const path = `images/${bricks.tiles[i]}.png`;
+      img.settAttribute('src', path);
     };
-
-
 
     const brick = document.importNode(templateDiv.firstElementChild, true);
     // FIXME:
+    
     brick.addEventListener('click', handleClick);
     div.appendChild(brick);
   }
+
+
+}
+
+
+
+const memory = () => {
+
+  const renderOptions = {
+  rows: 4,
+  columns: 4
+  };
+
+  const bricks = {
+  tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
+  };
+
+  const containerId = 'memory';
+  renderMemory(containerId, bricks);
+
 };
 
 export default memory;
