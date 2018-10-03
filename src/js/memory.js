@@ -13,4 +13,26 @@
 /* TODO: 3. En enklare dokumenatation i README.md som ska vara skriven i markup språket Markdown.
 Bör innhållar kortare information om vad som ligger i respektive fil samt vilka kommandon som ska
 köras för att starta utvecklingsserver samt hur man bygger en build. */
+const memory = () => {
+  const rows = 4; // Antalet rader
+  const columns = 4; // Antalet kolumner
 
+  const containerId = 'memory';
+
+  const container = document.getElementById(containerId);
+  const template = document.querySelector('#memory template');
+
+  // FIXME:
+  const templateDiv = template.content.firstElementChild;
+
+  const div = document.importNode(templateDiv, false);
+
+  container.appendChild(div);
+
+  for (let i = 0; i < rows * columns; i++) {
+    const brick = document.importNode(templateDiv.firstElementChild, true);
+    div.appendChild(brick);
+  }
+};
+
+export default memory;

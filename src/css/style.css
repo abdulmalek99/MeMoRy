@@ -5,6 +5,7 @@
   display: flex; /* talar om att vi vill använda flexbox */
   justify-content: center; /* centrerar horizontalt */
   align-items: center; /* centrerar vertikalt */
+  margin: 5px;
 }
 
 
@@ -15,4 +16,6 @@
 .memory {
   width: 450px; /* sätter bredden */
   margin: 0 auto; /* centrerar horizontalt */
+  display: flex;
+  flex-wrap: wrap;
 }
