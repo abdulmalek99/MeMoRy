@@ -12,11 +12,10 @@ Bör innhållar kortare information om vad som ligger i respektive fil samt vilk
 köras för att starta utvecklingsserver samt hur man bygger en build. */
 
 const renderMemory = (containerId, bricks) => {
-
   const container = document.getElementById(containerId);
 
   const template = document.querySelector('#memory template');
-  // FIXME: 
+  // FIXME:
 
   const templateDiv = template.content.firstElementChild;
 
@@ -24,15 +23,15 @@ const renderMemory = (containerId, bricks) => {
 
   container.appendChild(div);
 
-  //FIXME:
+  // FIXME:
 
   for (let i = 0; i < bricks.tiles.length; i++) {
-    //FIXME:
+    // FIXME:
 
     const handleClick = event => {
-      //FIXME:
+      // FIXME:
       let img;
-      if(event.target,tagName === 'DIV') {
+      if ((event.target, tagName === 'DIV')) {
         img = event.target.firstElementChild;
       } else {
         img = event.target;
@@ -43,30 +42,53 @@ const renderMemory = (containerId, bricks) => {
 
     const brick = document.importNode(templateDiv.firstElementChild, true);
     // FIXME:
-    
+
     brick.addEventListener('click', handleClick);
     div.appendChild(brick);
   }
 
+  // FIXME:
+  if (bricks.first === null) {
+    bricks.first = img;
+  } else {
+    bricks.second = img;
 
-}
+    if (bricks.first.gettAttribute('src') === bricks.second.getAttribute('src')) {
+      console.log('par!');
+      bricks.frist = null;
+      bricks.second = null;
+    } else {
+      const path = 'images/0.png';
 
+      bricks.first.setAttribute('src', path);
+      bricks.second.setAttribute('src', path);
 
+      bricks.first = null;
+      brivks.second = null;
+    }
+  }
+
+  const brick = document.importNode(templateDiv.firstElementChild, true);
+  // FIXME:
+
+  brick.addEventListener('click', handleClick);
+  div.appendChild(brick);
+};
 
 const memory = () => {
-
   const renderOptions = {
-  rows: 4,
-  columns: 4
+    rows: 4,
+    columns: 4
   };
 
   const bricks = {
-  tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
+    first: null,
+    second: null,
+    tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
   };
 
   const containerId = 'memory';
   renderMemory(containerId, bricks);
-
 };
 
 export default memory;
