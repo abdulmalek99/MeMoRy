@@ -38,6 +38,30 @@ const renderMemory = (containerId, bricks) => {
       }
       const path = `images/${bricks.tiles[i]}.png`;
       img.settAttribute('src', path);
+
+      // FIXME:
+
+      if (bricks.first === null) {
+        bricks.first = img;
+      } else {
+        bricks.second = img;
+
+
+        if (bricks.first.getAttribute('src') === bricks.second.getAttribute('src')) {
+          console.log('par!');
+          bricks.first = null;
+          bricks.second = null;
+        } else {
+
+          const path = 'images/0.png';
+
+          bricks.first.setAttribute('src', path);
+          bricks.second.setAttribute('src', path);
+
+          bricks.first = null;
+          bricks.second = null;
+        }
+      }
     };
 
     const brick = document.importNode(templateDiv.firstElementChild, true);
