@@ -1,3 +1,4 @@
+import getMixedNumberArray from './helpers';
 // TODO: 1.5. När 2 brickor vänds ska antalet försök uppdateras
 // TODO: 1.6. När 2 lika brickor vänds ska antalet par uppdateras
 // TODO: 1.7. Brickorna måste blandas
@@ -99,7 +100,7 @@ const memory = () => {
   const bricks = {
     first: null,
     second: null,
-    tiles: [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]
+    tiles: getMixedNumberArray((renderOptions.rows * renderOptions.columns) / 2)
   };
 
   const containerId = 'memory';
