@@ -1,5 +1,3 @@
-// TODO: 1.3. Om 2 olika brickor vänds så ska dom tas bort.
-// TODO: 1.4. om 2 olika brickor vänds så ska dem vändas tillbaka.
 // TODO: 1.5. När 2 brickor vänds ska antalet försök uppdateras
 // TODO: 1.6. När 2 lika brickor vänds ska antalet par uppdateras
 // TODO: 1.7. Brickorna måste blandas
@@ -11,7 +9,43 @@
 Bör innhållar kortare information om vad som ligger i respektive fil samt vilka kommandon som ska
 köras för att starta utvecklingsserver samt hur man bygger en build. */
 
+const turnBrick = (bricks, img) => {
+  // FIXME:
+
+  if (bricks.first === null) {
+    bricks.first = img;
+  } else {
+    bricks.second = img;
+
+    if (bricks.first.getAttribute('src') === bricks.second.getAttribute('src')) {
+      // FIXME:
+
+      const removeBrick = () => {
+        bricks.first.parentElement.classList.add('hidden');
+        bricks.second.parentElement.classList.add('hidden');
+
+        bricks.first = null;
+        bricks.second = null;
+      };
+      window.setTimeout(removeBrick, 100);
+    } else {
+      // FIXME:
+      const turnBackBrick = () => {
+        const path = 'images/0.png';
+
+        bricks.first.setAttribute('src', path);
+        bricks.second.setAttribute('src', path);
+
+        bricks.first = null;
+        bricks.second = null;
+      };
+      window.setTimeout(turnBackBrick, 100);
+    }
+  }
+};
+
 const renderMemory = (containerId, bricks) => {
+
   const container = document.getElementById(containerId);
 
   const template = document.querySelector('#memory template');
@@ -31,37 +65,15 @@ const renderMemory = (containerId, bricks) => {
     const handleClick = event => {
       // FIXME:
       let img;
-      if ((event.target, tagName === 'DIV')) {
+      if (event.target.tagName === 'DIV') {
         img = event.target.firstElementChild;
       } else {
         img = event.target;
       }
       const path = `images/${bricks.tiles[i]}.png`;
-      img.settAttribute('src', path);
+      img.setAttribute('src', path);
 
-      // FIXME:
-
-      if (bricks.first === null) {
-        bricks.first = img;
-      } else {
-        bricks.second = img;
-
-
-        if (bricks.first.getAttribute('src') === bricks.second.getAttribute('src')) {
-          console.log('par!');
-          bricks.first = null;
-          bricks.second = null;
-        } else {
-
-          const path = 'images/0.png';
-
-          bricks.first.setAttribute('src', path);
-          bricks.second.setAttribute('src', path);
-
-          bricks.first = null;
-          bricks.second = null;
-        }
-      }
+      turnBrick(bricks, img);
     };
 
     const brick = document.importNode(templateDiv.firstElementChild, true);
@@ -70,36 +82,10 @@ const renderMemory = (containerId, bricks) => {
     brick.addEventListener('click', handleClick);
     div.appendChild(brick);
   }
-
-  // FIXME:
-  if (bricks.first === null) {
-    bricks.first = img;
-  } else {
-    bricks.second = img;
-
-    if (bricks.first.gettAttribute('src') === bricks.second.getAttribute('src')) {
-      console.log('par!');
-      bricks.frist = null;
-      bricks.second = null;
-    } else {
-      const path = 'images/0.png';
-
-      bricks.first.setAttribute('src', path);
-      bricks.second.setAttribute('src', path);
-
-      bricks.first = null;
-      brivks.second = null;
-    }
-  }
-
-  const brick = document.importNode(templateDiv.firstElementChild, true);
-  // FIXME:
-
-  brick.addEventListener('click', handleClick);
-  div.appendChild(brick);
 };
 
 const memory = () => {
+
   const renderOptions = {
     rows: 4,
     columns: 4
