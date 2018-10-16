@@ -21,7 +21,7 @@ const turnBrick = (bricks, img) => {
   } else {
     bricks.second = img;
 
-    if (bricks.first.getAttribute('src') === bricks.second.getAttribute('src')) {
+    if (bricks.first.getAttribute('src') === bricks.second.getAttribute('src') && bricks.first.getAttribute('data-index-number') !== bricks.second.getAttribute('data-index-number')) {
       // FIXME:
 
       const removeBrick = () => {
@@ -84,6 +84,7 @@ const renderMemory = (containerId, bricks) => {
     // FIXME:
 
     brick.addEventListener('click', handleClick);
+    brick.firstElementChild.setAttribute('data-index-number', i);
     div.appendChild(brick);
   }
 };
