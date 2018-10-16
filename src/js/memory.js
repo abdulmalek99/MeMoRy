@@ -10,6 +10,10 @@ Bör innhållar kortare information om vad som ligger i respektive fil samt vilk
 köras för att starta utvecklingsserver samt hur man bygger en build. */
 
 const turnBrick = (bricks, img) => {
+  // FIXME: 
+  if (bricks.second !== null) {
+    return;
+  }
   // FIXME:
 
   if (bricks.first === null) {
